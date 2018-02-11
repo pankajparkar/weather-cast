@@ -9,7 +9,26 @@ export class FiltersComponent implements OnInit {
 
   constructor() { }
 
+  getLocation() {
+
+  }
+
+  loadDropdownData() {
+    this.getLocation()
+    this.getCountries();
+    this.getCities();
+  }
+
   ngOnInit() {
+    this.loadDropdownData();
+  }
+
+  getCities() {
+
+  }
+
+  getCountries() {
+
   }
 
 }
