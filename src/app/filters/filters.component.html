@@ -1,17 +1,28 @@
 <h1 mat-dialog-title>Weather Filters</h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <mat-select placeholder="Select Contry">
-      <mat-option value="option">Option</mat-option>
+    <mat-select placeholder="Select Country">
+      <mat-option *ngFor="let country of countries">
+        {{country.name}}-{{country.code}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Select State">
+      <mat-option *ngFor="let state of states">
+        {{state.region}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
     <mat-select placeholder="Select City">
-      <mat-option value="option">Option</mat-option>
+      <mat-option *ngFor="let city of cities">
+        {{city.city}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-	<button mat-button (click)="close()">Cancel</button>
-	<button mat-button cdkFocusInitial>Ok</button>
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-button cdkFocusInitial>Ok</button>
 </div>

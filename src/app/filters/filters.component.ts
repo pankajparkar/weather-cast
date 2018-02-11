@@ -13,6 +13,7 @@ export class FiltersComponent implements OnInit {
 
   cities: any;
   countries: any;
+  states: any;
 
   constructor(
     private detectLocationService: LocationDetectorService,
@@ -25,9 +26,10 @@ export class FiltersComponent implements OnInit {
   }
 
   loadDropdownData() {
-    this.getLocation().subscribe(location => {
+    this.getLocation().subscribe((ipData:any) => {
       this.getCountries();
-      this.getCities();
+      this.getRegions(ipData.country_code);
+      this.getCities(ipData.country_code, ipData.region);
     });
   }
 
@@ -35,8 +37,8 @@ export class FiltersComponent implements OnInit {
     this.loadDropdownData();
   }
 
-  getCities() {
-    this.dropdownService.getCities().subscribe(
+  getCities(countryCode: string, regionName: string) {
+    this.dropdownService.getCities(countryCode, regionName).subscribe(
       cities => this.cities = cities
     );
   }
@@ -44,6 +46,12 @@ export class FiltersComponent implements OnInit {
   getCountries() {
     this.dropdownService.getCountries().subscribe(
       countries => this.countries = countries
+    );
+  }
+
+  getRegions(regionName: string) {
+    this.dropdownService.getRegions(regionName).subscribe(
+      states => this.states = states
     );
   }
 
