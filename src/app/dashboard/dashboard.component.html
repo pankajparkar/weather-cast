@@ -1,6 +1,9 @@
 <div class="container">
   <mat-list>
-    <h3 mat-subheader>{{weatherCast?.city.name}}, {{weatherCast?.city.country}}</h3>
+    <h3 mat-subheader>
+      Weather in&nbsp;
+      <b>{{weatherCast?.city.name}}, {{weatherCast?.city.country}}</b>
+    </h3>
     <ng-container *ngFor="let cast of weatherCast?.list; let index = index">
       <mat-list-item *ngIf="index % 8 == 0">
         <p mat-line> 
