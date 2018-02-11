@@ -5,13 +5,20 @@
     <mat-icon class="toolbar-icon">verified_user</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-    Sidenav content
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
-    <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="container">
+  <mat-list>
+    <h3 mat-subheader>Folders</h3>
+    <mat-list-item *ngFor="let folder of folders">
+      <mat-icon mat-list-icon>folder</mat-icon>
+      <h4 mat-line>{{folder.name}}</h4>
+      <p mat-line> {{folder.updated | date}} </p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <h3 mat-subheader>Notes</h3>
+    <mat-list-item *ngFor="let note of notes">
+      <mat-icon mat-list-icon>note</mat-icon>
+      <h4 mat-line>{{note.name}}</h4>
+      <p mat-line> {{note.updated | date}} </p>
+    </mat-list-item>
+  </mat-list>
+</div>
