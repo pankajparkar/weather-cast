@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 
 import { LocationDetectorService } from '../services/location-detector.service';
 import { DropdownService } from '../services/dropdown.service';
@@ -15,6 +16,7 @@ export class FiltersComponent implements OnInit {
 
   constructor(
     private detectLocationService: LocationDetectorService,
+    private dialogRef: MatDialogRef<FiltersComponent>,
     private dropdownService: DropdownService
   ) { }
 
@@ -43,6 +45,10 @@ export class FiltersComponent implements OnInit {
     this.dropdownService.getCountries().subscribe(
       countries => this.countries = countries
     );
+  }
+
+  close(){
+    this.dialogRef.close();
   }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const IPDATA_API_ENDPOINT = '//api.ipdata.co/';
+const IPDATA_API_ENDPOINT = 'https://api.ipdata.co/';
 
 @Injectable()
 export class LocationDetectorService {

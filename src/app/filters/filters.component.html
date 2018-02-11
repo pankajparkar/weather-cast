@@ -1,3 +1,17 @@
-<p>
-  filters works!
-</p>
+<h1 mat-dialog-title>Weather Filters</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-select placeholder="Select Contry">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Select City">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+	<button mat-button (click)="close()">Cancel</button>
+	<button mat-button cdkFocusInitial>Ok</button>
+</div>
