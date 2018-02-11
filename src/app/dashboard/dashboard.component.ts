@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '../services/weather.service';
 
 @Component({
   selector: 'wc-dashboard',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private weatherService: WeatherService) { }
 
   folders = [
     {
@@ -35,6 +36,9 @@ export class DashboardComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.weatherService.getWeatherData().subscribe(
+      data => console.log(data)
+    );
   }
 
 }
