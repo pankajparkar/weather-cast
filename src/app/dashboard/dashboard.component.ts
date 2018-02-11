@@ -12,6 +12,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private weatherService: WeatherService) { }
 
+  selected = 0;
+
   ngOnInit() {
     this.weatherService.getWeatherData().subscribe(
       weatherCast => this.weatherCast = weatherCast
