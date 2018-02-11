@@ -10,12 +10,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WeatherService } from './services/weather.service';
 import { DropdownService } from './services/dropdown.service';
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
