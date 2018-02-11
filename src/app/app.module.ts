@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WeatherService } from './services/weather.service';
 import { DropdownService } from './services/dropdown.service';
 import { FiltersComponent } from './filters/filters.component';
+import { LocationDetectorService } from './services/location-detector.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FiltersComponent } from './filters/filters.component';
   ],
   providers: [
     WeatherService,
-    DropdownService
+    DropdownService,
+    LocationDetectorService
   ],
   bootstrap: [AppComponent]
 })
