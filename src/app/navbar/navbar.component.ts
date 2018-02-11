@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+
+import { FiltersComponent } from '../filters/filters.component';
 
 @Component({
   selector: 'wc-navbar',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private matDialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  openFilters() {
+    this.matDialog.open(FiltersComponent);
   }
 
 }

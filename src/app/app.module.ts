@@ -33,6 +33,7 @@ import { LocationDetectorService } from './services/location-detector.service';
     DropdownService,
     LocationDetectorService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [FiltersComponent]
 })
 export class AppModule { }
