@@ -1,17 +1,25 @@
 <div class="container">
   <mat-list>
-    <h3 mat-subheader>Folders</h3>
-    <mat-list-item *ngFor="let folder of folders">
-      <mat-icon mat-list-icon>folder</mat-icon>
-      <h4 mat-line>{{folder.name}}</h4>
-      <p mat-line> {{folder.updated | date}} </p>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <h3 mat-subheader>Notes</h3>
-    <mat-list-item *ngFor="let note of notes">
-      <mat-icon mat-list-icon>note</mat-icon>
-      <h4 mat-line>{{note.name}}</h4>
-      <p mat-line> {{note.updated | date}} </p>
-    </mat-list-item>
+    <h3 mat-subheader>{{weatherCast?.city.name}}, {{weatherCast?.city.country}}</h3>
+    <ng-container *ngFor="let cast of weatherCast?.list; let index = index">
+      <mat-list-item *ngIf="index % 8 == 0">
+        <!-- <mat-icon mat-list-icon>folder</mat-icon> -->
+        <div mat-line> 
+          <ul>
+            <li *ngFor="let weather of cast.weather">
+              {{weather.main}} {{weather.description}}
+            </li>
+          </ul>
+        </div>
+        <div mat-line> 
+          <ul>
+            <li *ngFor="let weather of cast.weather">
+              {{weather.main}} {{weather.description}}
+            </li>
+          </ul>
+        </div>
+        <p mat-line> {{cast.dt_txt | date}} </p>
+      </mat-list-item>
+    </ng-container>
   </mat-list>
 </div>
