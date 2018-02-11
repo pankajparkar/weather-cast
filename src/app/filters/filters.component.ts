@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import 'rxjs/add/operator/do'
 
 import { LocationDetectorService } from '../services/location-detector.service';
 import { DropdownService } from '../services/dropdown.service';
@@ -22,7 +23,8 @@ export class FiltersComponent implements OnInit {
   ) { }
 
   getLocation() {
-    return this.detectLocationService.getIPData();
+    return this.detectLocationService.getIPData()
+      .do(ipData=> this.ipData = ipData);
   }
 
   loadDropdownData() {
