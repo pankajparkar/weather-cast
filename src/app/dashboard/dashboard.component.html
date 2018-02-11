@@ -3,21 +3,38 @@
     <h3 mat-subheader>{{weatherCast?.city.name}}, {{weatherCast?.city.country}}</h3>
     <ng-container *ngFor="let cast of weatherCast?.list; let index = index">
       <mat-list-item *ngIf="index % 8 == 0">
-        <!-- <mat-icon mat-list-icon>folder</mat-icon> -->
-        <div mat-line> 
-          <ul>
-            <li *ngFor="let weather of cast.weather">
+        <p mat-line> 
+          Main: 
+          <span>
+            {{cast.main.grnd_level}} {{cast.main.description}}
+          </span>
+        </p>
+        <p mat-line> 
+          Clouds: 
+          <span>
+            {{cast.clouds.all}}
+          </span>
+        </p>
+        <p mat-line> 
+          Rain: 
+          <span>
+            {{cast.rain['3h']}}
+          </span>
+        </p>
+        <p mat-line> 
+          Weather
+          <span>
+            <span *ngFor="let weather of cast.weather">
               {{weather.main}} {{weather.description}}
-            </li>
-          </ul>
-        </div>
-        <div mat-line> 
-          <ul>
-            <li *ngFor="let weather of cast.weather">
-              {{weather.main}} {{weather.description}}
-            </li>
-          </ul>
-        </div>
+            </span>
+          </span>
+        </p>
+        <p mat-line> 
+          Wind
+          <span>
+            {{cast.wind.main}} {{cast.wind.description}}
+          </span>
+        </p>
         <p mat-line> {{cast.dt_txt | date}} </p>
       </mat-list-item>
     </ng-container>
