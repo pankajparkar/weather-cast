@@ -14,8 +14,6 @@ import { FiltersComponent } from './filters/filters.component';
 import { LocationDetectorService } from './services/location-detector.service';
 import 'rxjs/add/operator/toPromise';
 
-export
-
 @NgModule({
   declarations: [
     AppComponent,
