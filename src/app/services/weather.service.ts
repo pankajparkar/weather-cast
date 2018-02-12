@@ -14,7 +14,7 @@ export class WeatherService {
 
   getWeatherData(city: string, countryCode: string) {
     return this.httpClient.get(FORECAST_API_URL, {
-        params: { q: `${city},${countryCode}` }
+        params: { q: `${city},${countryCode}`, units: 'metric' }
       }
     );
   }
