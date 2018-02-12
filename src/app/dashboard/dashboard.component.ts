@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
 
   weatherCast: any;
   locationData: any;
+  date: Date = new Date();
 
   constructor(
     private weatherService: WeatherService,
