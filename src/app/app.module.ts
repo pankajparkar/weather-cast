@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
@@ -12,6 +12,9 @@ import { WeatherService } from './services/weather.service';
 import { DropdownService } from './services/dropdown.service';
 import { FiltersComponent } from './filters/filters.component';
 import { LocationDetectorService } from './services/location-detector.service';
+import 'rxjs/add/operator/toPromise';
+
+export
 
 @NgModule({
   declarations: [
@@ -32,7 +35,16 @@ import { LocationDetectorService } from './services/location-detector.service';
   providers: [
     WeatherService,
     DropdownService,
-    LocationDetectorService
+    LocationDetectorService,
+    {
+      // Provider for APP_INITIALIZER
+      provide: APP_INITIALIZER,
+      useFactory: (locationDetectorService: LocationDetectorService) => {
+        return () => locationDetectorService.getIPData().toPromise()
+      },
+      deps: [LocationDetectorService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
   entryComponents: [FiltersComponent]

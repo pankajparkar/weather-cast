@@ -12,8 +12,7 @@ export class WeatherService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getWeatherData(){
-    let loc
+  getWeatherData(countryName: string, countryCode: string, city: string){
     return this.httpClient.get(FORECAST_API_URL, {
         params: {q: 'London,us'}
       }

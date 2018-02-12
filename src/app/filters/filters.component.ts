@@ -15,7 +15,7 @@ export class FiltersComponent implements OnInit {
   cities: any;
   countries: any;
   states: any;
-  ipData: any;
+  locationData: any;
 
   constructor(
     private detectLocationService: LocationDetectorService,
@@ -23,21 +23,15 @@ export class FiltersComponent implements OnInit {
     private dropdownService: DropdownService
   ) { }
 
-  getLocation() {
-    return this.detectLocationService.getIPData()
-      .do(ipData => this.ipData = ipData);
-  }
-
-  loadDropdownData() {
-    this.getLocation().subscribe((ipData: any) => {
-      this.getCountries();
-      this.getRegions(ipData.country_code);
-      this.getCities(ipData.country_code, ipData.region);
-    });
+  loadDropdownData(ipData: any) {
+    this.getCountries();
+    this.getRegions(ipData.country_code);
+    this.getCities(ipData.country_code, ipData.region);
   }
 
   ngOnInit() {
-    this.loadDropdownData();
+    this.locationData = this.detectLocationService.ipData;
+    this.loadDropdownData(this.locationData);
   }
 
   getCities(countryCode: string, regionName: string) {
@@ -56,8 +50,8 @@ export class FiltersComponent implements OnInit {
     this.dropdownService.getRegions(regionName).subscribe(
       states => {
         this.states = states;
-        let currentRegion = this.states.filter(state => ~state.region.indexOf(this.ipData.region)) || [];
-        if (currentRegion.length) this.ipData.region = currentRegion[0].region
+        let currentRegion = this.states.filter(state => ~state.region.indexOf(this.locationData.region)) || [];
+        if (currentRegion.length) this.locationData.region = currentRegion[0].region
       }
     );
   }
