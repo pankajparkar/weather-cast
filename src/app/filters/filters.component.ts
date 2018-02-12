@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import 'rxjs/add/operator/do'
+import 'rxjs/add/operator/do';
 
 import { LocationDetectorService } from '../services/location-detector.service';
 import { DropdownService } from '../services/dropdown.service';
@@ -15,6 +15,7 @@ export class FiltersComponent implements OnInit {
   cities: any;
   countries: any;
   states: any;
+  ipData: any;
 
   constructor(
     private detectLocationService: LocationDetectorService,
@@ -24,11 +25,11 @@ export class FiltersComponent implements OnInit {
 
   getLocation() {
     return this.detectLocationService.getIPData()
-      .do(ipData=> this.ipData = ipData);
+      .do(ipData => this.ipData = ipData);
   }
 
   loadDropdownData() {
-    this.getLocation().subscribe((ipData:any) => {
+    this.getLocation().subscribe((ipData: any) => {
       this.getCountries();
       this.getRegions(ipData.country_code);
       this.getCities(ipData.country_code, ipData.region);
@@ -53,11 +54,15 @@ export class FiltersComponent implements OnInit {
 
   getRegions(regionName: string) {
     this.dropdownService.getRegions(regionName).subscribe(
-      states => this.states = states
+      states => {
+        this.states = states;
+        let currentRegion = this.states.filter(state => ~state.region.indexOf(this.ipData.region)) || [];
+        if (currentRegion.length) this.ipData.region = currentRegion[0].region
+      }
     );
   }
 
-  close(){
+  close() {
     this.dialogRef.close();
   }
 
