@@ -23,5 +23,6 @@ Documents anything you might implement with more time (features, fixes, technica
 3. Add Details button on each day weather, that will open details on new page.
 4. Based on day/night change theme color to light and dark.
 5. Make UI more intuitive by improving details sections specifically.
+6. Add server side rendering to improve intial rendering performance.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
