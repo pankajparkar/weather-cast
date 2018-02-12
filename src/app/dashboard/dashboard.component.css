@@ -5,3 +5,23 @@
 .dashboar-tab-content {
     padding: 16px;
 }
+
+.temp {
+    font-size: 20px;
+}
+
+.temp-current{
+    font-size: 30px;
+}
+
+.temp-title{
+    flex-direction: row
+}
+
+.description{
+    line-height: 50px;  
+}
+
+.temp-status{
+    font-size: 25px;
+}

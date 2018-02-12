@@ -7,86 +7,33 @@
     <ng-container *ngFor="let cast of weatherCast?.list; let index = index">
       <mat-expansion-panel *ngIf="index % 8 == 0" [expanded]="selected == index" (opened)="selected=index" hideToggle="true">
         <mat-expansion-panel-header>
-          <mat-panel-title>
-            Main:
-            <span>
-              {{cast.main.temp}} {{cast.main.grnd_level}}&nbsp;
-            </span>
+          <mat-panel-title class="temp-title">
+            <img class="weather-widget__img" src="assets/weather-icons/{{cast.weather[0].icon}}.png" alt="Weather London , GB" width="50"
+              height="50">
+            <span class="temp-current">{{cast.main.temp}}</span>&#8451;
+            <b class="temp-status">- {{cast.weather[0].main}}</b>
           </mat-panel-title>
-          <mat-panel-description>
-            <span *ngIf="cast.clouds"></span>{{cast.clouds.all}}&nbsp;
+          <mat-panel-description class="description">
+
+            <small>min</small>
+            <span class="temp">{{cast.main.temp_min}}</span>&#8451; &nbsp;-&nbsp;
+            <small>max</small>
+            <span class="temp">{{cast.main.temp_max}}</span>&#8451;
+            <span *ngIf="cast.clouds && cast.clouds.all > 0"></span>{{cast.clouds.all}}&nbsp;
             <span *ngIf="cast.rain">{{cast.rain['3h']}}&nbsp;</span>
             <span *ngIf="cast.wind">{{cast.wind.main}}&nbsp;</span>
             {{cast.dt_txt | date}}
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <div class="button-row">
-          <button mat-icon-button>
-            <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-          </button>
-          <button mat-icon-button color="primary">
-            <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-          </button>
-          <button mat-icon-button color="accent">
-            <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-          </button>
-          <button mat-icon-button color="warn">
-            <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-          </button>
-          <button mat-icon-button disabled>
-            <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-          </button>
-        </div>
-        <!-- <mat-card>
-          <mat-card-content>
-            <h2>Tabs with icon labels</h2>
-            <mat-tab-group class="demo-tab-group">
-              <mat-tab label="Tab 1">
-                <ng-template mat-tab-label>
-                  <mat-icon>security</mat-icon>
-                </ng-template>
-                <div class="demo-tab-content" *ngIf="cast.clouds">
-                  Clouds:
-                  <span>
-                    {{cast.clouds.all}}
-                  </span>
-                </div>
-              </mat-tab>
-              <mat-tab label="Tab 2" *ngIf="cast.rain">
-                <ng-template mat-tab-label>
-                  <mat-icon>attach_file</mat-icon>
-                </ng-template>
-                <div class="demo-tab-content">
-                  Rain:
-                  <span>
-                    {{cast.rain['3h']}}
-                  </span>
-                </div>
-              </mat-tab>
-              <mat-tab label="Tab 3" *ngIf="cast.weather">
-                <ng-template mat-tab-label>
-                  <mat-icon>block</mat-icon>
-                </ng-template>
-                <div class="dashboard-tab-content">
-                  <span *ngFor="let weather of cast.weather">
-                    {{weather.main}} {{weather.description}}
-                  </span>
-                </div>
-              </mat-tab>
-              <mat-tab label="Tab 3" *ngIf="cast.wind">
-                <ng-template mat-tab-label>
-                  <mat-icon>block</mat-icon>
-                </ng-template>
-                <div class="dashboar-tab-content">
-                  Wind
-                  <span>
-                    {{cast.wind.main}} {{cast.wind.description}}
-                  </span>
-                </div>
-              </mat-tab>
-            </mat-tab-group>
-          </mat-card-content>
-        </mat-card> -->
+        <mat-divider></mat-divider>
+        <mat-list dense>
+          <mat-list-item *ngFor="let item of weatherCast?.list | slice: index: index+7">
+            <img class="weather-widget__img" src="assets/weather-icons/{{cast.weather[0].icon}}.png" alt="Weather London , GB" width="50"
+              height="50">
+            <span class="temp-current">{{item.main.temp}}</span>&#8451;
+            {{item.dt_txt | date: 'hh:mm a'}}
+          </mat-list-item>
+        </mat-list>
       </mat-expansion-panel>
     </ng-container>
 
