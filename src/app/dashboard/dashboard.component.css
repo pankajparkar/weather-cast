@@ -10,18 +10,23 @@
     font-size: 20px;
 }
 
-.temp-current{
+.temp-current {
     font-size: 30px;
 }
 
-.temp-title{
-    flex-direction: row
+.temp-title {
+    flex-direction: row;
+    line-height: 50px;
 }
 
-.description{
+.description {
     line-height: 50px;  
 }
 
-.temp-status{
+.temp-status {
     font-size: 25px;
+}
+
+.spacer {
+    flex: 1 1 auto;
 }

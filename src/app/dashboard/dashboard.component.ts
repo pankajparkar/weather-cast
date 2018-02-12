@@ -12,13 +12,13 @@ export class DashboardComponent implements OnInit {
   weatherCast: any;
   locationData: any;
   date: Date = new Date();
+  selected = 0;
 
   constructor(
     private weatherService: WeatherService,
     private locationDetectorService: LocationDetectorService
   ) { }
 
-  selected = 0;
 
   getWeatherData(ipData: any){
     this.weatherService.getWeatherData(ipData.city, ipData.country_code).subscribe(
