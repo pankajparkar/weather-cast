@@ -10,6 +10,7 @@ import { LocationDetectorService } from '../services/location-detector.service';
 export class DashboardComponent implements OnInit {
 
   weatherCast: any;
+  locationData: any;
 
   constructor(
     private weatherService: WeatherService,
@@ -18,13 +19,14 @@ export class DashboardComponent implements OnInit {
 
   selected = 0;
 
-  getWeatherData(data: any){
-    this.weatherService.getWeatherData().subscribe(
+  getWeatherData(ipData: any){
+    this.weatherService.getWeatherData(ipData.city, ipData.country_code).subscribe(
       weatherCast => this.weatherCast = weatherCast
     );
   }
 
   ngOnInit() {
-    this.getWeatherData(this.locationDetectorService.ipData);
+    this.locationData = this.locationDetectorService.ipData;
+    this.getWeatherData(this.locationData);
   }
 }

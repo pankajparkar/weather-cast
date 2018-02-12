@@ -15,9 +15,9 @@
               </span>
             </mat-panel-title>
             <mat-panel-description>
-              {{cast.clouds.all}}&nbsp;
-              {{cast.rain['3h']}}&nbsp;
-              {{cast.wind.main}}&nbsp;
+              <span *ngIf="cast.clouds"></span>{{cast.clouds.all}}&nbsp;
+              <span *ngIf="cast.rain">{{cast.rain['3h']}}&nbsp;</span>
+              <span *ngIf="cast.wind">{{cast.wind.main}}&nbsp;</span>
               {{cast.dt_txt | date}}
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -29,14 +29,14 @@
                   <ng-template mat-tab-label>
                     <mat-icon>security</mat-icon>
                   </ng-template>
-                  <div class="demo-tab-content">
+                  <div class="demo-tab-content" *ngIf="cast.clouds">
                     Clouds: 
                     <span>
                       {{cast.clouds.all}}
                     </span>
                   </div>
                 </mat-tab>
-                <mat-tab label="Tab 2">
+                <mat-tab label="Tab 2" *ngIf="cast.rain">
                   <ng-template mat-tab-label>
                     <mat-icon>attach_file</mat-icon>
                   </ng-template>
@@ -47,7 +47,7 @@
                     </span>
                   </div>  
                 </mat-tab>
-                <mat-tab label="Tab 3" disabled>
+                <mat-tab label="Tab 3" *ngIf="cast.weather">
                   <ng-template mat-tab-label>
                     <mat-icon>block</mat-icon>
                   </ng-template>
@@ -57,7 +57,7 @@
                     </span>
                   </div>  
                 </mat-tab>
-                <mat-tab label="Tab 3">
+                <mat-tab label="Tab 3" *ngIf="cast.wind">
                   <ng-template mat-tab-label>
                     <mat-icon>block</mat-icon>
                   </ng-template>
