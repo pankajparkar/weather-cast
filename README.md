@@ -24,5 +24,6 @@ Documents anything you might implement with more time (features, fixes, technica
 4. Based on day/night change theme color to light and dark.
 5. Make UI more intuitive by improving details sections specifically.
 6. Add server side rendering to improve intial rendering performance.
+7. Divide dashboard component to smaller component. So that it can be useful in multiple place, like weather details page.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
