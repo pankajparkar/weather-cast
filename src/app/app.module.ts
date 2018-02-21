@@ -13,13 +13,15 @@ import { DropdownService } from './services/dropdown.service';
 import { FiltersComponent } from './filters/filters.component';
 import { LocationDetectorService } from './services/location-detector.service';
 import 'rxjs/add/operator/toPromise';
+import { WeatherForecastComponent } from './weather-forecast/weather-forecast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     DashboardComponent,
-    FiltersComponent
+    FiltersComponent,
+    WeatherForecastComponent
   ],
   imports: [
     BrowserModule,

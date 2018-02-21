@@ -1,8 +1,7 @@
 <div class="container">
   <mat-accordion class="example-headers-align">
     <h1 mat-subheader>
-      Weather in&nbsp;
-      <b>{{weatherCast?.city.name}}, {{weatherCast?.city.country}}</b> &nbsp;{{date | date: 'dd-MM-yyyy'}}
+      <wc-weather-forecast [weather]="weatherCast" [date]="date"></wc-weather-forecast>
     </h1>
     <ng-container *ngFor="let cast of weatherCast?.list; let index = index">
       <mat-expansion-panel *ngIf="index % 8 == 0" [expanded]="selected == index" (opened)="selected=index" hideToggle="true">
