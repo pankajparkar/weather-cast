@@ -10,10 +10,6 @@
     font-size: 20px;
 }
 
-.temp-current {
-    font-size: 30px;
-}
-
 .temp-title {
     flex-direction: row;
     line-height: 50px;

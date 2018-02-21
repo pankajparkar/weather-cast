@@ -14,6 +14,8 @@ import { FiltersComponent } from './filters/filters.component';
 import { LocationDetectorService } from './services/location-detector.service';
 import 'rxjs/add/operator/toPromise';
 import { WeatherForecastComponent } from './weather-forecast/weather-forecast.component';
+import { WeatherForecastDetailsComponent } from './weather-forecast-details/weather-forecast-details.component';
+import { WeatherForecastCityComponent } from './weather-forecast-city/weather-forecast-city.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { WeatherForecastComponent } from './weather-forecast/weather-forecast.co
     NavbarComponent,
     DashboardComponent,
     FiltersComponent,
-    WeatherForecastComponent
+    WeatherForecastComponent,
+    WeatherForecastDetailsComponent,
+    WeatherForecastCityComponent
   ],
   imports: [
     BrowserModule,

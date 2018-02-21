@@ -7,21 +7,10 @@
       <mat-expansion-panel *ngIf="index % 8 == 0" [expanded]="selected == index" (opened)="selected=index" hideToggle="true">
         <mat-expansion-panel-header>
           <mat-panel-title class="temp-title">
-            <img class="weather-widget__img" src="assets/weather-icons/{{cast.weather[0].icon}}.png" alt="Weather London , GB" width="50"
-              height="50">
-            <span class="temp-current">{{cast.main.temp}}</span>&#8451;
-            <b class="temp-status">- {{cast.weather[0].main}}</b>
+            <wc-weather-forecast-city [cast]="cast"></wc-weather-forecast-city>
           </mat-panel-title>
           <mat-panel-description class="description">
-
-            <small>min</small>
-            <span class="temp">{{cast.main.temp_min}}</span>&#8451; &nbsp;-&nbsp;
-            <small>max</small>
-            <span class="temp">{{cast.main.temp_max}}</span>&#8451;
-            <span *ngIf="cast.clouds && cast.clouds.all > 0"></span>{{cast.clouds.all}}&nbsp;
-            <span *ngIf="cast.rain">{{cast.rain['3h']}}&nbsp;</span>
-            <span *ngIf="cast.wind">{{cast.wind.main}}&nbsp;</span>
-            {{cast.dt_txt | date}}
+            <wc-weather-forecast-details [cast]="cast"></wc-weather-forecast-details>
           </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-divider></mat-divider>
