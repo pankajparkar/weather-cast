@@ -17,6 +17,7 @@ import { WeatherForecastComponent } from './weather-forecast/weather-forecast.co
 import { WeatherForecastDetailsComponent } from './weather-forecast-details/weather-forecast-details.component';
 import { WeatherForecastCityComponent } from './weather-forecast-city/weather-forecast-city.component';
 import { WeatherForecastHistoryComponent } from './weather-forecast-history/weather-forecast-history.component';
+import { FiltersService } from './filters/filters.service';
 
 @NgModule({
   declarations: [
@@ -42,11 +43,12 @@ import { WeatherForecastHistoryComponent } from './weather-forecast-history/weat
     WeatherService,
     DropdownService,
     LocationService,
+    FiltersService,
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,
-      useFactory: (locationDetectorService: LocationService) => {
-        return () => locationDetectorService.getIPData().toPromise()
+      useFactory: (locationService: LocationService) => {
+        return () => locationService.getIPData().toPromise()
       },
       deps: [LocationService],
       multi: true

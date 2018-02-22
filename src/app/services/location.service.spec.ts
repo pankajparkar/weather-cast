@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { LocationService } from './location.service';
 
-describe('LocationDetectorService', () => {
+describe('locationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [LocationService]
