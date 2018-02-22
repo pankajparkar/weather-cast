@@ -12,4 +12,11 @@
 
 ul {
     list-style: none;
+    padding: 0;
+}
+
+ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
