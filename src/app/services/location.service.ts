@@ -10,7 +10,8 @@ const IPDATA_API_ENDPOINT = 'https://api.ipdata.co';
 @Injectable()
 export class LocationService {
 
-  ipData: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  ipData$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  ipData: any;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -20,7 +21,8 @@ export class LocationService {
     else
       return this.httpClient.jsonp(IPDATA_API_ENDPOINT, 'callback')
         .do(ipData => {
-          this.ipData.next(ipData);
+          this.ipData$.next(ipData);
+          this.ipData = ipData;
         });
   }
 

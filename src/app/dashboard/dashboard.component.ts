@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private weatherService: WeatherService,
-    private locationDetectorService: LocationService
+    private locationService: LocationService
   ) { }
 
 
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.locationData = this.locationDetectorService.ipData;
+    this.locationData = this.locationService.ipData;
     console.log(this.locationData);
     this.getWeatherData(this.locationData);
   }
