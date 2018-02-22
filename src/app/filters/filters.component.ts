@@ -36,8 +36,11 @@ export class FiltersComponent implements OnInit {
 
   getCities(countryCode: string, regionName: string) {
     this.dropdownService.getCities(countryCode, regionName).subscribe(
-      cities => this.cities = cities
-    );
+      cities => {
+        this.cities = cities;
+        let currentCity = this.cities.filter(city => ~city.city.indexOf(this.locationData.city)) || [];
+        if (currentCity.length) this.locationData.city = currentCity[0].city;
+    });
   }
 
   getCountries() {
