@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../services/weather.service';
-import { LocationDetectorService } from '../services/location-detector.service';
+import { LocationService } from '../services/location.service';
 
 @Component({
   selector: 'wc-dashboard',
@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private weatherService: WeatherService,
-    private locationDetectorService: LocationDetectorService
+    private locationDetectorService: LocationService
   ) { }
 
 

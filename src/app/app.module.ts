@@ -11,7 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WeatherService } from './services/weather.service';
 import { DropdownService } from './services/dropdown.service';
 import { FiltersComponent } from './filters/filters.component';
-import { LocationDetectorService } from './services/location-detector.service';
+import { LocationService } from './services/location.service';
 import 'rxjs/add/operator/toPromise';
 import { WeatherForecastComponent } from './weather-forecast/weather-forecast.component';
 import { WeatherForecastDetailsComponent } from './weather-forecast-details/weather-forecast-details.component';
@@ -41,14 +41,14 @@ import { WeatherForecastHistoryComponent } from './weather-forecast-history/weat
   providers: [
     WeatherService,
     DropdownService,
-    LocationDetectorService,
+    LocationService,
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,
-      useFactory: (locationDetectorService: LocationDetectorService) => {
+      useFactory: (locationDetectorService: LocationService) => {
         return () => locationDetectorService.getIPData().toPromise()
       },
-      deps: [LocationDetectorService],
+      deps: [LocationService],
       multi: true
     }
   ],

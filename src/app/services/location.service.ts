@@ -7,7 +7,7 @@ import 'rxjs/add/observable/of';
 const IPDATA_API_ENDPOINT = 'https://api.ipdata.co';
 
 @Injectable()
-export class LocationDetectorService {
+export class LocationService {
 
   ipData: any;
 

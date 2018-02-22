@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import 'rxjs/add/operator/do';
 
-import { LocationDetectorService } from '../services/location-detector.service';
+import { LocationService } from '../services/location.service';
 import { DropdownService } from '../services/dropdown.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class FiltersComponent implements OnInit {
   locationData: any;
 
   constructor(
-    private detectLocationService: LocationDetectorService,
+    private detectLocationService: LocationService,
     private dialogRef: MatDialogRef<FiltersComponent>,
     private dropdownService: DropdownService
   ) { }
