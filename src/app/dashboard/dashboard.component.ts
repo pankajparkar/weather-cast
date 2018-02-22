@@ -21,8 +21,7 @@ export class DashboardComponent implements OnInit {
 
 
   getWeatherData(ipData: any){
-    //for now hardcoded Mumbai
-    this.weatherService.getWeatherData('Mumbai', ipData.country_code).subscribe(
+    this.weatherService.getWeatherData(ipData.city, ipData.country_code).subscribe(
       weatherCast => this.weatherCast = weatherCast
     );
   }
