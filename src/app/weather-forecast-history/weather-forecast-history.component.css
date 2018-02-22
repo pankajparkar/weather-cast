@@ -1,0 +1,15 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.temp-current-small {
+    font-size: 25px;
+}
+
+.chip-right{
+    float: right;
+}
+
+ul {
+    list-style: none;
+}

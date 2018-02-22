@@ -16,6 +16,7 @@ import 'rxjs/add/operator/toPromise';
 import { WeatherForecastComponent } from './weather-forecast/weather-forecast.component';
 import { WeatherForecastDetailsComponent } from './weather-forecast-details/weather-forecast-details.component';
 import { WeatherForecastCityComponent } from './weather-forecast-city/weather-forecast-city.component';
+import { WeatherForecastHistoryComponent } from './weather-forecast-history/weather-forecast-history.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { WeatherForecastCityComponent } from './weather-forecast-city/weather-fo
     FiltersComponent,
     WeatherForecastComponent,
     WeatherForecastDetailsComponent,
-    WeatherForecastCityComponent
+    WeatherForecastCityComponent,
+    WeatherForecastHistoryComponent
   ],
   imports: [
     BrowserModule,

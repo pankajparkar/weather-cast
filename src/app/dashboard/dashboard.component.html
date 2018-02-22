@@ -14,18 +14,7 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-divider></mat-divider>
-        <mat-list dense>
-          <h3 mat-subheader>Details with 3hrs difference</h3>
-          <mat-list-item *ngFor="let item of weatherCast?.list | slice: index: index+7">
-            <img class="weather-widget__img" src="assets/weather-icons/{{cast.weather[0].icon}}.png" alt="Weather London , GB" width="50"
-              height="50">
-            <span class="temp-current-small">{{item.main.temp}}</span>&#8451;
-            <span class="spacer"></span>
-            <mat-chip-list>
-              <mat-chip>{{item.dt_txt | date: 'hh:mm a'}}</mat-chip>
-            </mat-chip-list>
-          </mat-list-item>
-        </mat-list>
+        <wc-weather-forecast-history [history]="weatherCast?.list" [start]="index"></wc-weather-forecast-history>
       </mat-expansion-panel>
     </ng-container>
 
