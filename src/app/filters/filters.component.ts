@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import { Subscription } from 'rxjs/Subscription'
 import 'rxjs/add/operator/do';
 
 import { LocationService } from '../services/location.service';
@@ -16,6 +17,7 @@ export class FiltersComponent implements OnInit {
   countries: any;
   states: any;
   locationData: any;
+  locationSubscription: Subscription;
 
   constructor(
     private locationService: LocationService,
@@ -30,8 +32,10 @@ export class FiltersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.locationData = this.locationService.ipData;
-    this.loadDropdownData(this.locationData);
+    this.locationSubscription = this.locationService.getIpData().subscribe(ipData => {
+      this.locationData = this.locationService.ipData;
+      this.loadDropdownData(this.locationData);
+    });
   }
 
   getCities(countryCode: string, regionName: string) {

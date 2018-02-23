@@ -1,4 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription'
+
 import { WeatherService } from '../services/weather.service';
 import { LocationService } from '../services/location.service';
 
@@ -13,7 +15,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   locationData: any;
   date: Date = new Date();
   selected = 0;
-  locationSubscription: any;
+  locationSubscription: Subscription;
 
   constructor(
     private weatherService: WeatherService,
@@ -35,6 +37,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    // this.locationSubscription.unsubscribe()
+    this.locationSubscription.unsubscribe()
   }
 }
