@@ -18,7 +18,7 @@ export class FiltersComponent implements OnInit {
   locationData: any;
 
   constructor(
-    private detectLocationService: LocationService,
+    private locationService: LocationService,
     private dialogRef: MatDialogRef<FiltersComponent>,
     private dropdownService: DropdownService
   ) { }
@@ -30,7 +30,7 @@ export class FiltersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.locationData = this.detectLocationService.ipData;
+    this.locationData = this.locationService.ipData;
     this.loadDropdownData(this.locationData);
   }
 
@@ -38,7 +38,8 @@ export class FiltersComponent implements OnInit {
     this.dropdownService.getCities(countryCode, regionName).subscribe(
       cities => {
         this.cities = cities;
-    });
+      }
+    );
   }
 
   getCountries() {

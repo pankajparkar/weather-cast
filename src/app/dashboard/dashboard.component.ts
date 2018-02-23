@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WeatherService } from '../services/weather.service';
 import { LocationService } from '../services/location.service';
 
@@ -7,12 +7,13 @@ import { LocationService } from '../services/location.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   weatherCast: any;
   locationData: any;
   date: Date = new Date();
   selected = 0;
+  locationSubscription: any;
 
   constructor(
     private weatherService: WeatherService,
@@ -27,8 +28,13 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.locationData = this.locationService.ipData;
-    console.log(this.locationData);
-    this.getWeatherData(this.locationData);
+    this.locationSubscription = this.locationService.getIpData().subscribe(ipData => {
+      this.locationData = this.locationService.ipData;
+      this.getWeatherData(this.locationData);
+    });
+  }
+
+  ngOnDestroy(){
+    // this.locationSubscription.unsubscribe()
   }
 }
