@@ -26,5 +26,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="close()">Cancel</button>
-  <button mat-button cdkFocusInitial>Ok</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="locationData">Ok</button>
 </div>

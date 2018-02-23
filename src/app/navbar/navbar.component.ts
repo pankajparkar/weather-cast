@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { FiltersComponent } from '../filters/filters.component';
+import { LocationService } from '../services/location.service';
 
 @Component({
   selector: 'wc-navbar',
@@ -10,13 +11,17 @@ import { FiltersComponent } from '../filters/filters.component';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private matDialog: MatDialog) { }
+  constructor(private matDialog: MatDialog, private locationService: LocationService) { }
 
   ngOnInit() {
   }
 
   openFilters() {
-    this.matDialog.open(FiltersComponent);
+    this.matDialog.open(FiltersComponent).afterClosed().subscribe(
+      changedIpData => {
+        if(changedIpData) this.locationService.setIpData(changedIpData);
+      }
+    );
   }
 
 }
