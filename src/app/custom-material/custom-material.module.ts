@@ -67,7 +67,7 @@ const materialImports = [
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule
-]
+];
 
 @NgModule({
   imports: [...materialImports],

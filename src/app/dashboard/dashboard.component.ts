@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription'
+import { Subscription } from 'rxjs/Subscription';
 
 import { WeatherService } from '../services/weather.service';
 import { LocationService } from '../services/location.service';
@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) { }
 
 
-  getWeatherData(ipData: any){
+  getWeatherData(ipData: any) {
     this.weatherService.getWeatherData(ipData.city, ipData.country_code).subscribe(
       weatherCast => this.weatherCast = weatherCast
     );
@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(){
-    this.locationSubscription.unsubscribe()
+  ngOnDestroy() {
+    this.locationSubscription.unsubscribe();
   }
 }

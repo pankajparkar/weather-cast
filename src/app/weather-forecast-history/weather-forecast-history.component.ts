@@ -11,9 +11,9 @@ export class WeatherForecastHistoryComponent implements OnInit {
 
   @Input() history: any;
   @Input()
-  set start(value: number){
-    this.startIndex = value; 
-    this.endIndex = !isNaN(value) ? value + 7: 0; 
+  set start(value: number) {
+    this.startIndex = value;
+    this.endIndex = !isNaN(value) ? value + 7 : 0;
   }
   constructor() { }
 

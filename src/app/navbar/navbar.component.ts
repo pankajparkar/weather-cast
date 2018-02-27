@@ -19,7 +19,9 @@ export class NavbarComponent implements OnInit {
   openFilters() {
     this.matDialog.open(FiltersComponent).afterClosed().subscribe(
       changedIpData => {
-        if(changedIpData) this.locationService.setIpData(changedIpData);
+        if (changedIpData) {
+          this.locationService.setIpData(changedIpData);
+        }
       }
     );
   }

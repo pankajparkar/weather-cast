@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/observable/of';
 
 const IPDATA_API_ENDPOINT = 'https://api.ipdata.co';
-const FALLBACK_CITY: string = 'Mumbai';
+const FALLBACK_CITY = 'Mumbai';
 
 @Injectable()
 export class LocationService {
@@ -16,26 +16,28 @@ export class LocationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getIpData(){
+  getIpData() {
     return this.ipData$.asObservable();
   }
 
-  setIpData(changedIpData){
+  setIpData(changedIpData) {
     this.ipData$.next(changedIpData);
   }
 
   getIPData() {
-    if (this.ipData)
+    if (this.ipData) {
       return Observable.of(this.ipData);
-    else
+    } else {
       return this.httpClient.jsonp(IPDATA_API_ENDPOINT, 'callback')
         .do((ipData: any) => {
-          //TODO fallback to be removed
-          if(ipData.city === 'Ghatkopar') ipData.city = FALLBACK_CITY;
+          // TODO fallback to be removed
+          if (ipData.city === 'Ghatkopar') {
+            ipData.city = FALLBACK_CITY;
+          }
           this.ipData$.next(ipData);
-
           this.ipData = ipData;
         });
+    }
   }
 
 }
