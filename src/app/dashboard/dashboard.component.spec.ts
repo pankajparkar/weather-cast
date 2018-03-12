@@ -10,44 +10,40 @@ import { WeatherForecastComponent } from '../weather-forecast/weather-forecast.c
 import { CustomMaterialModule } from '../custom-material/custom-material.module';
 import { AppModule } from '../app.module';
 import { ipData, weatherData } from '../../test/mock-data'
+import { BrowserModule } from '@angular/platform-browser';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
+  let weatherService: WeatherService;
+  let locationService: LocationService;
 
   beforeEach(() => {
-
-    let weatherServiceMock = class {
-      getWeatherData() {
-        return Observable.of(weatherData);
-      }
-    };
-    let locationServiceMock = class {
-      getIPData() {
-        return Observable.of(ipData);
-      }
-    };
+    let stubLocationService = {
+      getIpData: () => Observable.of(ipData),
+      ipData: ipData,
+      ipData$: new BehaviorSubject<any>(ipData)
+    }
 
     TestBed.configureTestingModule({
-      // Provide both the service-to-test and its (spy) dependency
-      providers: [
-        { provide: WeatherService, useClass: weatherServiceMock },
-        { provide: LocationService, useClass: locationServiceMock }
-      ],
-      // declarations: [DashboardComponent],
       imports: [AppModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    });
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [
+        { provide: LocationService, useValue: stubLocationService }
+      ]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DashboardComponent);
+
     component = fixture.componentInstance;
   });
 
   it('Intially location data should have loaded', () => {
-    debugger
     //after component loaded
     fixture.detectChanges();
-    expect(component.locationData).toBeUndefined();
+    debugger;
+    expect(component.locationData).toBeDefined();
 
   });
 
