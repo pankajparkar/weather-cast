@@ -32,7 +32,7 @@ export class FiltersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.locationSubscription = this.locationService.getIpData().subscribe(ipData => {
+    this.locationSubscription = this.locationService.ipDataGetter().subscribe(ipData => {
       this.locationData = this.locationService.ipData;
       this.loadDropdownData(this.locationData);
     });

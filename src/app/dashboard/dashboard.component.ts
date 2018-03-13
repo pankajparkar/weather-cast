@@ -26,15 +26,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   getWeatherData(ipData: any) {
     this.weatherService.getWeatherData(ipData.city, ipData.country_code).subscribe(
       weatherCast => {
-        debugger
         this.weatherCast = weatherCast
       }
     );
   }
 
   ngOnInit() {
-    debugger
-    this.locationSubscription = this.locationService.getIpData().subscribe(ipData => {
+    this.locationSubscription = this.locationService.getIPData().subscribe(ipData => {
       this.locationData = this.locationService.ipData;
       this.getWeatherData(this.locationData);
     });

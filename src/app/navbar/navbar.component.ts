@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
     this.matDialog.open(FiltersComponent).afterClosed().subscribe(
       changedIpData => {
         if (changedIpData) {
-          this.locationService.setIpData(changedIpData);
+          this.locationService.ipDataSetter(changedIpData);
         }
       }
     );

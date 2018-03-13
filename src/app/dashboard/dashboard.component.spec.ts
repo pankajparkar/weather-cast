@@ -21,16 +21,19 @@ describe('DashboardComponent', () => {
 
   beforeEach(() => {
     let stubLocationService = {
-      getIpData: () => Observable.of(ipData),
+      getIPData: () => Observable.of(ipData),
       ipData: ipData,
       ipData$: new BehaviorSubject<any>(ipData)
-    }
+    }, stubWeatherService = {
+      getWeatherData: () => Observable.of(ipData)
+    };
 
     TestBed.configureTestingModule({
       imports: [AppModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-        { provide: LocationService, useValue: stubLocationService }
+        { provide: LocationService, useValue: stubLocationService },
+        { provide: WeatherService, useValue: stubWeatherService },
       ]
     }).compileComponents();
 
@@ -39,19 +42,23 @@ describe('DashboardComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('Intially location data should have loaded', () => {
-    //after component loaded
-    fixture.detectChanges();
-    debugger;
-    expect(component.locationData).toBeDefined();
 
+  describe('Default values', () => {
+    it('location should have loaded with city, state and country', () => {
+      //after component loaded
+      fixture.detectChanges();
+      expect(component.locationData).toBeDefined();
+      expect(component.locationData.city).toBeDefined();
+      expect(component.locationData.region_code).toBeDefined();
+      expect(component.locationData.country_code).toBeDefined();
+    });
+
+    it('should open first accordion', () => {
+      fixture.detectChanges();
+      expect(component.selected).toBe(0);
+    });
   });
 
-  // it('Setting enabled to true enables the submit button', () => {
-  //   component.enabled = true;
-  //   fixture.detectChanges();
-  //   expect(submitEl.nativeElement.disabled).toBeFalsy();
-  // });
 
   // it('Entering email and password emits loggedIn event', () => {
   //   let user: User;

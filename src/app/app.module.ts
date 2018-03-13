@@ -48,7 +48,7 @@ import { FiltersService } from './filters/filters.service';
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,
       useFactory: (locationService: LocationService) => {
-        return () => locationService.getIpData().toPromise();
+        return () => locationService.getIPData().toPromise();
       },
       deps: [LocationService],
       multi: true

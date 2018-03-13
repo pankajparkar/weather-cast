@@ -16,11 +16,11 @@ export class LocationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getIpData() {
+  ipDataGetter() {
     return this.ipData$.asObservable();
   }
 
-  setIpData(changedIpData) {
+  ipDataSetter(changedIpData) {
     this.ipData$.next(changedIpData);
   }
 
