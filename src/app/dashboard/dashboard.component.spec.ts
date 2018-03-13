@@ -29,7 +29,8 @@ describe('DashboardComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [CustomMaterialModule],
+      declarations: [DashboardComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         { provide: LocationService, useValue: stubLocationService },

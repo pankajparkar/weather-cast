@@ -31,3 +31,6 @@ export const weatherData = {
     ],
     "city": { "id": 1262180, "name": "Nagpur", "coord": { "lat": 21.1498, "lon": 79.0821 }, "country": "IN", "population": 2228018 }
 };
+export let countries = [{"name":"Afghanistan","code":"af"},{"name":"Albania","code":"al"},{"name":"Algeria","code":"dz"},{"name":"Andorra","code":"ad"},{"name":"Iceland","code":"is"},{"name":"India","code":"in"},{"name":"Indonesia","code":"id"},{"name":"Iran","code":"ir"},{"name":"Iraq","code":"iq"},{"name":"Ireland","code":"ie"},{"name":"Israel","code":"il"}];
+export let states = [{"region":"Assam","country":"in"},{"region":"Goa","country":"in"},{"region":"Madhya Pradesh","country":"in"},{"region":"Manipur","country":"in"},{"region":"Meghalaya","country":"in"}];
+export let cities = [{"city":"Ahmadnagar","region":"State of Maharashtra","country":"in","latitude":"19.39999962","longitude":"74.65000153"},{"city":"Akola","region":"State of Maharashtra","country":"in","latitude":"20.50000000","longitude":"77.16667175"}];
