@@ -21,6 +21,7 @@ Run `ng test` to execute the unit tests
 2. Based on day/night change theme color to light and dark.
 3. Make UI more intuitive by improving details sections specifically.
 4. Convert these comopnents to embedable component, so that they can be used as widget using Angular Elements.
+5. Improve code coverage by testing all code functionally.
 
 #Performance
 1. Optimize page size, and intial page load, currently it takes 4 seconds.
