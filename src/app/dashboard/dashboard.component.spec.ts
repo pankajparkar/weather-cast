@@ -22,11 +22,12 @@ describe('Dashboard Component', () => {
   let locationService: LocationService;
 
   beforeEach(() => {
+    let ipData$ = new BehaviorSubject<any>(ipData);
     let stubLocationService = {
       getIPData: () => Observable.of(ipData),
       ipData: ipData,
-      ipData$: new BehaviorSubject<any>(ipData),
-      ipDataGetter: () => this.ipData$.asObservable()
+      ipData$: ipData$,
+      ipDataGetter: () => ipData$.asObservable()
     }, stubWeatherService = {
       getWeatherData: () => Observable.of(weatherData)
     };

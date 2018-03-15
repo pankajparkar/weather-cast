@@ -5,12 +5,9 @@ import { Observable } from 'rxjs/Observable';
 
 import { LocationService } from '../services/location.service';
 import { CustomMaterialModule } from '../custom-material/custom-material.module';
-import { AppModule } from '../app.module';
 import { weatherData } from '../../test/mock-data'
 import { BrowserModule, By } from '@angular/platform-browser';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatExpansionPanel } from '@angular/material';
 import { WeatherForecastDetailsComponent } from './weather-forecast-details.component';
 
 describe('Weather Forecast Details Component', () => {
