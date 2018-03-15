@@ -25,7 +25,8 @@ describe('Dashboard Component', () => {
     let stubLocationService = {
       getIPData: () => Observable.of(ipData),
       ipData: ipData,
-      ipData$: new BehaviorSubject<any>(ipData)
+      ipData$: new BehaviorSubject<any>(ipData),
+      ipDataGetter: () => this.ipData$.asObservable()
     }, stubWeatherService = {
       getWeatherData: () => Observable.of(weatherData)
     };
