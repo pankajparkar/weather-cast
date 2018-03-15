@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'wc-weather-forecast',
   templateUrl: './weather-forecast.component.html',
-  styleUrls: ['./weather-forecast.component.css']
+  styleUrls: ['./weather-forecast.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherForecastComponent implements OnInit {
 
