@@ -15,7 +15,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionPanel } from '@angular/material';
 
-describe('DashboardComponent', () => {
+describe('Dashboard Component', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
   let weatherService: WeatherService;
@@ -54,7 +54,6 @@ describe('DashboardComponent', () => {
       expect(component.locationData.city).toBeDefined();
       expect(component.locationData.region_code).toBeDefined();
       expect(component.locationData.country_code).toBeDefined();
-      debugger
       expect(component.weatherCast).toBeDefined();
     });
 

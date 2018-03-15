@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     );
   }
   selectAccordion(index: number){
-    debugger
     this.selected = index;
   }
 
