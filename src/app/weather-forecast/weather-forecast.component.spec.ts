@@ -21,18 +21,10 @@ describe('Weather Forecast Component', () => {
   let locationService: LocationService;
 
   beforeEach(() => {
-    let stubLocationService = {
-      getIPData: () => Observable.of(ipData),
-      ipData: ipData,
-      ipData$: new BehaviorSubject<any>(ipData)
-    }
     TestBed.configureTestingModule({
       imports: [CustomMaterialModule, NoopAnimationsModule],
       declarations: [WeatherForecastComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [
-        { provide: LocationService, useValue: stubLocationService }
-      ]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(WeatherForecastComponent);
