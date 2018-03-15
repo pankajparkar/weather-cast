@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ViewChildren, QueryList } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -10,8 +10,10 @@ import { WeatherForecastComponent } from '../weather-forecast/weather-forecast.c
 import { CustomMaterialModule } from '../custom-material/custom-material.module';
 import { AppModule } from '../app.module';
 import { ipData, weatherData } from '../../test/mock-data'
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionPanel } from '@angular/material';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -25,11 +27,11 @@ describe('DashboardComponent', () => {
       ipData: ipData,
       ipData$: new BehaviorSubject<any>(ipData)
     }, stubWeatherService = {
-      getWeatherData: () => Observable.of(ipData)
+      getWeatherData: () => Observable.of(weatherData)
     };
 
     TestBed.configureTestingModule({
-      imports: [CustomMaterialModule],
+      imports: [CustomMaterialModule, NoopAnimationsModule],
       declarations: [DashboardComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
@@ -52,6 +54,8 @@ describe('DashboardComponent', () => {
       expect(component.locationData.city).toBeDefined();
       expect(component.locationData.region_code).toBeDefined();
       expect(component.locationData.country_code).toBeDefined();
+      debugger
+      expect(component.weatherCast).toBeDefined();
     });
 
     it('should open first accordion', () => {
@@ -60,20 +64,43 @@ describe('DashboardComponent', () => {
     });
   });
 
+  it('Should load single panel', () => {
+    fixture.detectChanges();
+    let el = fixture.nativeElement;
+    const accordion = el.querySelectorAll('mat-accordion');
+    expect(accordion.length).toBe(1);
+  });
 
-  // it('Entering email and password emits loggedIn event', () => {
-  //   let user: User;
-  //   loginEl.nativeElement.value = "test@example.com";
-  //   passwordEl.nativeElement.value = "123456";
+  it('Should have loaded all accordion on page', () => {
+    fixture.detectChanges();
+    let el = fixture.nativeElement;
+    const expansionPanel = el.querySelectorAll('mat-expansion-panel');
+    expect(expansionPanel.length).toBe(5);
+  });
 
-  //   // Subscribe to the Observable and store the user in a local variable.
-  //   component.loggedIn.subscribe((value) => user = value);
+  describe("Should change the index of panel if different panel", function(){
+    it('3rd accordion selected', () => {
+      let el = fixture.nativeElement;
+      
+      fixture.detectChanges();
+      const expansionPanel = fixture.debugElement.queryAll(By.css('mat-expansion-panel'));
+      expansionPanel[2].componentInstance.opened.emit();
+  
+      fixture.detectChanges();
+      expect(component.selected).toBe(2*8);
+    });
+  
+    it('5rd accordion selected', () => {
+      let el = fixture.nativeElement;
+      
+      fixture.detectChanges();
+      const expansionPanel = fixture.debugElement.queryAll(By.css('mat-expansion-panel'));
+      expansionPanel[4].componentInstance.opened.emit();
+  
+      fixture.detectChanges();
+      expect(component.selected).toBe(4*8);
+    });
+  });
 
-  //   // This sync emits the event and the subscribe callback gets executed above
-  //   submitEl.triggerEventHandler('click', null);
 
-  //   // Now we can check to make sure the emitted value is correct
-  //   expect(user.email).toBe("test@example.com");
-  //   expect(user.password).toBe("123456");
-  // });
 });

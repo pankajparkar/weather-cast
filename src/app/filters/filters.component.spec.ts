@@ -80,7 +80,8 @@
 
 //     fixture = TestBed.createComponent(FiltersComponent);
 //     // fixture.debugElement
-//     // fixture.debugElement.injector.get(MatDialogRef<FiltersComponent>);
+//     let matDialogRef = fixture.debugElement.injector.get(MatDialogRef);
+//     matDialogRef
 //     component = fixture.componentInstance;
 //   });
 
