@@ -27,22 +27,23 @@ describe('Weather Forecast City Component', () => {
 
     fixture = TestBed.createComponent(WeatherForecastCityComponent);
     component = fixture.componentInstance;
-    component.cast = weatherData;
+    let cast = Object.assign({}, weatherData).list[0];
+    // cast.weather = undefined;
+    component.cast = cast;
   });
 
 
   describe('should display accurate output text displayed', () => {
     it('should have temperature', () => {
-      fixture.debugElement.nativeElement.removeChild(fixture.debugElement.nativeElement.children[0]);
       fixture.detectChanges();
       var temp = fixture.debugElement.query(By.css('.temp-current'));
-      expect(temp.nativeElement.innerText).toBeGreaterThan(component.cast.main.temp);
+      expect(Number(temp.nativeElement.innerText)).toBe(component.cast.main.temp);
     });
     it('should have main temperature status', () => {
-      fixture.debugElement.nativeElement.removeChild(fixture.debugElement.nativeElement.children[0]);
       fixture.detectChanges();
-      var temp = fixture.debugElement.query(By.css('.temp-status'));
-      expect(temp.nativeElement.innerText).toBeGreaterThan(component.cast.weather[0].main);
+      var tempStatus = fixture.debugElement.query(By.css('.temp-status'));
+      var weatherPresent = tempStatus.nativeElement.innerText.indexOf(component.cast.weather[0].main);
+      expect(weatherPresent).toBeGreaterThan(-1);
     });
   });
 });
