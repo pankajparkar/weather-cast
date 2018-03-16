@@ -60,7 +60,7 @@ export class FiltersComponent implements OnInit {
     );
   }
 
-  close(data) {
+  close(data?) {
     this.dialogRef.close(data);
   }
 
