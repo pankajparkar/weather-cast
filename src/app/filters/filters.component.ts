@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/do';
+import { Subscription } from 'rxjs';
 
 import { LocationService } from '../services/location.service';
 import { DropdownService } from '../services/dropdown.service';

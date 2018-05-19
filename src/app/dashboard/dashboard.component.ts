@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-
+import { Subscription } from 'rxjs';
+// import { toPromise } from 'rxjs-compat/operator';
+// import 'rxjs-compat/add/operators/toPromise';
 import { WeatherService } from '../services/weather.service';
 import { LocationService } from '../services/location.service';
 

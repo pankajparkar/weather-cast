@@ -3,6 +3,9 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { Observable, of } from 'rxjs'
+// import 'rxjs/operator/toPromise';
+import * as toPromise from 'rxjs/operator/toPromise';
 
 import { AppComponent } from './app.component';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
@@ -12,7 +15,7 @@ import { WeatherService } from './services/weather.service';
 import { DropdownService } from './services/dropdown.service';
 import { FiltersComponent } from './filters/filters.component';
 import { LocationService } from './services/location.service';
-import 'rxjs/add/operator/toPromise';
+
 import { WeatherForecastComponent } from './weather-forecast/weather-forecast.component';
 import { WeatherForecastDetailsComponent } from './weather-forecast-details/weather-forecast-details.component';
 import { WeatherForecastCityComponent } from './weather-forecast-city/weather-forecast-city.component';
