@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, ViewChildren, QueryList } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs';
 
 import { DashboardComponent } from './dashboard.component';
 import { LocationService } from '../services/location.service';
@@ -24,12 +25,12 @@ describe('Dashboard Component', () => {
   beforeEach(() => {
     let ipData$ = new BehaviorSubject<any>(ipData);
     let stubLocationService = {
-      getIPData: () => Observable.of(ipData),
+      getIPData: () => of(ipData),
       ipData: ipData,
       ipData$: ipData$,
       ipDataGetter: () => ipData$.asObservable()
     }, stubWeatherService = {
-      getWeatherData: () => Observable.of(weatherData)
+      getWeatherData: () => of(weatherData)
     };
 
     TestBed.configureTestingModule({
