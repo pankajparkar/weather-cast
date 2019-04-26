@@ -5,7 +5,7 @@ import { of, Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 const IPDATA_API_ENDPOINT = 'https://api.ipdata.co/1.1.1.1?api-key=150731c1daac573655cad56e9fce2f193d9e5f66a0954e400b465277';
-const FALLBACK_CITY = 'Mumbai';
+const FALLBACK_CITY = 'Indore';
 const FALLBACK_COUNTRY = 'IN';
 
 @Injectable()
