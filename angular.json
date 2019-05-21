@@ -28,12 +28,12 @@
               },
               {
                 "glob": "index.js",
-                "input": "src/server",
+                "input": "server",
                 "output": "/"
               },
               {
                 "glob": "package.json",
-                "input": "src/server",
+                "input": "server",
                 "output": "/"
               }
             ],
