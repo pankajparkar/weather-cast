@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var app = express();
 const compression = require('compression');
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
 
 app.use(compression({ threshold: 0 }));
 
